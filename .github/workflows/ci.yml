@@ -46,7 +46,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           config: pageLoadTimeout=100000,video=false
-          install-command: npm
+          install-command: npm install
           start: npm run dev
           wait-on: "http://localhost:3000"
           spec: ${{ matrix.spec }}
