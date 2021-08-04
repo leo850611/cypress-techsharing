@@ -37,17 +37,6 @@ jobs:
           java-version: 16
           distribution: 'zulu'
           architecture: x64
-      - name: Setup MySQL DB Server 8.0
-        uses: mirromutth/mysql-action@v1.1
-        with:
-          mysql version: "8.0"
-          character set server: "utf8mb4"
-          collation server: "utf8mb4_unicode_ci"
-          mysql database: "doughnut_e2e_test"
-          mysql user: ${{ secrets.DBUSER }}
-          mysql password: ${{ secrets.DBPASSWORD }}
-          host port: 3309
-          container port: 3309
       - name: Build frontend
         uses: actions/setup-node@v2
         with:
@@ -59,5 +48,5 @@ jobs:
           config: pageLoadTimeout=100000,video=false
           install-command: yarn
           start: yarn sut
-          wait-on: "http://localhost:9081"
+          wait-on: "http://localhost:3000"
           spec: ${{ matrix.spec }}
