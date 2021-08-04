@@ -41,7 +41,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16"
-      - run: yarn frontend:build
+      - run: npm install
       - name: End-to-End tests with Cypress
         uses: cypress-io/github-action@v2
         with:
