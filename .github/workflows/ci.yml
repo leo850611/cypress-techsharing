@@ -48,5 +48,5 @@ jobs:
           config: pageLoadTimeout=100000,video=false
           install-command: npm install
           start: npm run
-          wait-on: "http://localhost:3000"
+          wait-on: "http://localhost:8080"
           spec: ${{ matrix.spec }}
