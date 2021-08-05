@@ -18,13 +18,21 @@ describe('Cypress Workshop', () => {
         .findByRole("button", { name: "Edit" })
         .click()
         .then(() => {
-            cy.get("#address").clear().type("ABC");
-            cy.get("#city").clear().type("Shenzhen");
-            cy.get("#stateOrProvince").clear().type("Shenzhen");
-            cy.get("#country").clear().type("China");
-            cy.get("#postalCode").clear().type("666");
+            var address = "ABC";
+            var city = "Shenzhen";
+            var stateOrProvince = "Shenzhen";
+            var country = "China";
+            var postalCode = "666";
 
-            cy.contains('Submit').click()
+            cy.get("#address").clear().type(address);
+            cy.get("#city").clear().type(city);
+            cy.get("#stateOrProvince").clear().type(stateOrProvince);
+            cy.get("#country").clear().type(country);
+            cy.get("#postalCode").clear().type(postalCode);
+
+            cy.contains('Submit').click().then(()=>{
+                cy.contains(address+' '+city+' '+stateOrProvince+' '+country+' '+postalCode);
+            })
         });
 
     })
