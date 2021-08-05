@@ -36,5 +36,18 @@ describe('Cypress Workshop', () => {
         });
 
     })
+
+    it.only('can delete Shanghai', () => {
+        cy.contains('Shanghai Tech Community').parent()
+        .findByRole("button", { name: "Delete" })
+        .click();
+        
+        cy.contains('Shanghai Tech Community').parent()
+        .findByRole("button", { name: "Delete" })
+        .click()
+        .then(() => {
+            cy.findByText("Shanghai Tech Community").should("not.exist");
+        });
+    })
   })
   
